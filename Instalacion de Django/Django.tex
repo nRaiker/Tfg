@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{darkred}{rgb}{0.55, 0.0, 0.0}
+\definecolor{darkgray}{rgb}{0.88, 0.88, 0.88}
+
+\graphicspath{ {./Imagenes/} }
+\DeclareGraphicsExtensions {.pdf,.png,.jpg}
+
+
+
+\lstset{
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{darkred},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  backgroundcolor=\color{darkgray},
+}
+
+
+\title{Instalacion de Django}
+\author{Enrique García González}
+
+
+
+
+\begin{document}
+
+
+\maketitle
+
+Este documento se trata una guia de como realizar la instalación de Django y los elementos
+necesarios para el correcto funcionamiento de la aplicación web, asi como un pequeño 
+manual para iniciarse con Django
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\input{Capitulos/01_Instalacion}
+\input{Capitulos/02_Organizacion}
+\input{Capitulos/03_Templates}
+\input{Capitulos/04_Iniciar}
+\input{Capitulos/05_CSSyJV}
+\input{Capitulos/06_MySQL.tex}
+
+
+
+
+
+\end{document}

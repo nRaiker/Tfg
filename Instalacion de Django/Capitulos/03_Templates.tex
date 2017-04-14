@@ -1,0 +1,55 @@
+\section{Templates}
+
+Un template de Django es una cadena de texto que se utiliza para separar la representación
+de la página de los datos. Contienen también algunas reglas lógicas para regular
+que partes de la página se tienen que mostar y se encarga de generar el código html. La
+forma más comoda y ordenada de hacerlo es crear para cada página un fichero html dentro
+de la carpeta templates. Para poder utilizar este método tenemos que modificar el archivo
+settings.py (podemos ver donde se encuentra en la figura 1). Buscamos la parte
+correspondiente a los templates, que es de la siguiente forma:
+
+
+\lstset{
+  language=Python,
+}
+\begin{lstlisting}
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+\end{lstlisting}
+
+Modificamos la linea DIRS para que quede de la siguiente forma
+
+\begin{lstlisting}
+'DIRS': [os.path.join(BASE_DIR, 'templates')],
+\end{lstlisting}
+
+De esta forma ya podemos utilizar la carpeta templates, creada en el apartado 1 para
+almacenar todos nuestros templates.
+
+\hspace{1cm}
+
+Para más información sobre los templates en django:
+
+\hspace{1cm}
+
+http://djangobook.com/django-templates/
+
+http://djangobook.com/basic-template-tags-filters/
+
+http://djangobook.com/templates-in-views/
+
+http://djangobook.com/advanced-templates/
+

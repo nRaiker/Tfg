@@ -1,0 +1,89 @@
+\section{MySQL en Django}
+
+Para utilizar MySQL primero debemos instalar los siquientes paquetes:
+
+\lstset{
+  language=Bash,
+}
+\begin{lstlisting}
+sudo apt-get update
+sudo apt-get install python-pip python-dev mysql-server libmysqlclient-dev
+sudo pip install MySQL-python
+\end{lstlisting}
+
+
+En el transcurso de la instalación se nos preguntara por la contraseña que queremos darle al usuario root de MySQL
+
+Ahora debemos acceder a la base de datos para hacer unos ajustes, para ello usamos el comando
+
+
+\begin{lstlisting}
+mysql -u root -p
+\end{lstlisting}
+
+Ahora debemos crear una base de datos para nuestro proyecto (es aconsejable que cada proyecto tenga su propia base de datos) con el comando
+
+
+\lstset{
+  language=sql,
+}
+\begin{lstlisting}
+CREATE DATABASE lmd CHARACTER SET UTF8;
+\end{lstlisting}
+
+Y creamos un usuario para que interactue con la base de datos
+
+\begin{lstlisting}
+CREATE USER nraik@localhost IDENTIFIED BY '111111';
+\end{lstlisting}
+
+
+Y le damos todos los privilegios de la base de datos del proyecto
+
+\begin{lstlisting}
+GRANT ALL PRIVILEGES ON lmd.* TO nraik@localhost;
+\end{lstlisting}
+Y guardamos los cambios realizados
+
+\begin{lstlisting}
+FLUSH PRIVILEGES;
+\end{lstlisting}
+
+
+Ahora tenemos que indicarle al proyecto de Django que vamos a usar MySQL. Para ello buscamos en settings.py la seccion DATABASES y la modificamos de la siguiente manera:
+
+\lstset{
+  language=Python,
+}
+\begin{lstlisting}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lmd',
+        'USER': 'nraik',
+        'PASSWORD': '111111',
+        'HOST': 'localhost',
+        'PORT': '',
+       }
+}
+\end{lstlisting}
+
+Por podemos migrar las estructuras de a base de datos antigua de la siguiente forma
+
+\lstset{
+  language=Bash,
+}
+\begin{lstlisting}
+python3.5 manage.py makemigrations
+python manage.py migrate
+
+\end{lstlisting}
+
+Y despues creamos el usuario administrador de la siguiente forma
+
+\begin{lstlisting}
+python manage.py createsuperuser
+\end{lstlisting}
+
+Para comprobar que se ha realizado el cambio podemos acceder a la página http://localhost:<puerto>/admin y comprobar que el usuario creado con la orden anterior
+y su contraseña funcionan

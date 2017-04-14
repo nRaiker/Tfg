@@ -1,0 +1,35 @@
+\section{Añadir css y javacript}
+
+Para utilizararchivos .cc y javascript en un proyecto Django, debemos crear una carpeta
+llamada static en el mismo lugar donde se encuentra la carpeta templates. Dentro de esta
+carpeta creamos los directorios que queramos para organizar los distintos tipos de archivos.
+
+Ahora debemos modificar el archivo settings.py, la liena que contiene STATIC\_URL y añadimos
+esto al final
+
+\lstset{
+  language=Python
+}
+\begin{lstlisting}
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
+\end{lstlisting}
+
+Por ultimo, un ejemplo de como añadir un script de javascript en un template:
+
+\lstset{
+  language=HTML
+}
+\begin{lstlisting}
+{% load staic %}
+<script type="text/javascript" src="{% static" js/codgo.js"%}></script>
+
+\end{lstlisting}

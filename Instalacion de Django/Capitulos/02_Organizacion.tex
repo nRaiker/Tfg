@@ -1,0 +1,18 @@
+\section{Organización de un proyecto en Django}
+
+Este punto esta creado para orientar un poco sobre la organización de un proyecto
+en Django a aquellos usuarios que no lo han utilizado nunca.
+
+Django sigue una estructura de MOdelo-ista-Controlador, aunque no usa su propia lógica en
+la implementacion, ya que la capa Controlador es manejada por el framework. Por esto las partes más interesantes son:
+
+\begin{description}
+	\item[Model:] Es la capa de acceso a datos. COntiene todo sobre los datos: acceso, 
+	validación, relaciones entre ellos,etc.
+	\item[Template:] Capa de representación. Contiene la información sobre como se tienen que 
+	mostrar las cosas en la página Web
+	\item[View:] Esta capa que contiene la lógica de acceso a la capa Model y se la ofrece
+	al Template apropiado. Es como un puente entre las dos capas anteriores.
+\end{description}
+
+

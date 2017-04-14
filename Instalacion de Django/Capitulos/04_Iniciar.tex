@@ -1,0 +1,36 @@
+\section{Templates}
+
+Si queremos que nuestro servidor web sea accesile para otras máquinas, primero debemos
+modificar el archivo settngs.py. Buscamos las líneas donde aparecen DEBUG y ALLOWED\_HOST y 
+las dejamos de la siguiente manera
+
+
+\lstset{
+  language=Python,
+}
+\begin{lstlisting}
+# SECURUTY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['*']
+
+
+\end{lstlisting}
+
+Con DEBUG=False hacemos que si ocurre un error no aparezca la información de depuraciom en el 
+navegador, mostrando solamente un mensaje de error
+
+En ALLOWED\_HOST podemos añadir las IPs que nos interesessi queremos restringir el acceso a un
+conjunto de máquinas, o '*' si queremos que pueda acceder cualquier equipo.
+
+Para iniciar el servidor, ahora nos movemos al diretorio en el que se encuentra el archivo manage.py y ejecutamos el siguiente comando
+
+\lstset{
+  language=Bash,
+}
+\begin{lstlisting}
+python3.5 manage.py runserver 0.0.0.0:<puerto>
+\end{lstlisting}
+
+Y si no ha ocurrido ningun error ya tenemos el servior web abierto en el puerto indicado.
+
