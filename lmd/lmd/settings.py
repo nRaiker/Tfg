@@ -25,7 +25,7 @@ SECRET_KEY = 'fr7u6wzp+rk%f&4-mq$ge+@0nkc9n$azl5=q853h06kq)8-pw^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'subida'
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+
+#ruta donde guardaremos los archivos de media
+MEDIA_ROOT = '/home/enrique/Documentos/Tfg/lmd/media/'
