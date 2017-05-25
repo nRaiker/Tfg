@@ -24,3 +24,4 @@ def index(request):
     #tambien se puede utilizar render_to_response
     #return render_to_response('upload.html', {'form': form}, context_instance = RequestContext(request))
     return render(request, 'subida.html', {'form': form})
+
