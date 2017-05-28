@@ -11,13 +11,26 @@ from django.conf import settings
 from subida.forms import UploadForm
 from subida.models import Document
 
+import os
+
 
 def index(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(filename = request.POST['filename'],docfile = request.FILES['docfile'])
-            print type(newdoc)
+
+            IP = request.META.get('REMOTE_ADDR')
+            entrada=Document.objects.filter(propietario=IP)
+            if entrada:
+                for i in entrada:
+                    filepath=settings.MEDIA_ROOT + str(i)
+                    print filepath
+                    if(os.path.isfile(filepath)):
+                        print "Borrando"
+                        os.remove(filepath)
+                    i.delete()
+
+            newdoc = Document(propietario = IP,docfile = request.FILES['docfile'])
             newdoc.save(form)
             return redirect("index")
     else:
@@ -28,8 +41,6 @@ def index(request):
 
 def visualizar(request):
     
-    archivos=Document.objects.all()
     IP = request.META.get('REMOTE_ADDR')
-    print IP  
-    print settings.MEDIA_ROOT + str(archivos[0])
+    archivos=Document.objects.filter(propietario=IP)
     return render(request,'metadata.html',{'metadata':archivos})
