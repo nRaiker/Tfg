@@ -8,5 +8,46 @@ que necesitamos para conseguir nuestro objetivo.
 Los requisitos funcionales marcan como debe actuar el sistema ante las interraciones entre el sistema y los usuarios.
 Tienen que reflejar que servicios ofrecerá y como responderá ante ciertas acciones.
 
-%\begin{itemize}
-%	\item \textbf{RF-1.}
+\begin{itemize}
+	\renewcommand{\labelitemi}{$\bullet$}
+
+
+	\item \textbf{RF-1.} Gestión de archivos:
+	\begin{itemize}
+		\item \textbf{RF-1.1} Se debe permitir subir cualquier tipo de archivo.
+		\item \textbf{RF-1.2} Si no se pueden extraer los datos de ese tipo de fichero se debe informar de ello.
+		\item \textbf{RF-1.3} Los archivos que los usuarios descarguen deberán contener solamente los metadatos
+		indicados por ellos
+	\end{itemize}
+
+	\item \textbf{RF-2.} Gestión de metadatos:
+	\begin{itemize}
+		\item \textbf{RF-2.1} Se debe permitir visualizar los metadatos del archivo.
+		\item \textbf{RF-2.2} Debe ser posible elegir que metadatos se eliminan.
+		\item \textbf{RF-2.3} Los usuarios podrán modificar o añadir nuevos metadatos .
+	\end{itemize}
+
+	\item \textbf{RF-3.} Gestión de metadatos:
+	\begin{itemize}
+		\item \textbf{RF-3.1} Se debe permitir visualizar los metadatos del archivo.
+		\item \textbf{RF-3.2} Debe ser posible elegir que metadatos se eliminan.
+		\item \textbf{RF-3.3} Los usuarios podrán modificar o añadir nuevos metadatos.
+	\end{itemize}
+
+
+\section{Requisitos no funcionales}
+
+Los requisitos no funcionales describen restricciones y caracteristicas que han de tenerse en cuenta en el desarrollo
+del proyecto sin afectar directamente al funcionamiento del mismo
+
+\begin{itemize}
+	\item \textbf{RNF-1} Debe realizarse de manera que pueda ejecutarse bajo un servidor web debian/ubuntu
+	\item \textbf{RNF-2} La implementación se realizara en Python usando Django como Framework.
+	\item \textbf{RNF-3} Cada usuario solo podrá trabajar sobre un único archivo al mismo tiempo.
+	\item \textbf{RNF-4} Un usuario no podra acceder a los archivos de otro usuario.
+	\item \textbf{RNF-5} Debe realizarse utilizando solo herramientas de sofware libre.
+	\item \textbf{RNF-6} 
+
+\end{itemize}
+
+\end{itemize}
