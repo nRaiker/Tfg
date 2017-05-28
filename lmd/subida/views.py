@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 from django.http import HttpResponse
+from django.conf import settings
 
 from subida.forms import UploadForm
 from subida.models import Document
@@ -26,5 +27,9 @@ def index(request):
     return render(request, 'subida.html', {'form': form})
 
 def visualizar(request):
+    
     archivos=Document.objects.all()
+    IP = request.META.get('REMOTE_ADDR')
+    print IP  
+    print settings.MEDIA_ROOT + str(archivos[0])
     return render(request,'metadata.html',{'metadata':archivos})
