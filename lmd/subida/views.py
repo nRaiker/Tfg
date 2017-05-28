@@ -26,4 +26,5 @@ def index(request):
     return render(request, 'subida.html', {'form': form})
 
 def visualizar(request):
-    return render(request,'hola.html')
+    archivos=Document.objects.all()
+    return render(request,'metadata.html',{'metadata':archivos})
