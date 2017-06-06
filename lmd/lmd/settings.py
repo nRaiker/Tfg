@@ -132,3 +132,4 @@ STATICFILES_DIRS = [
 
 #ruta donde guardaremos los archivos de media
 MEDIA_ROOT = '/home/enrique/Documentos/Tfg/lmd/media/'
+MEDIA_URL = '/media/'

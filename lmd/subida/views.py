@@ -11,7 +11,12 @@ from django.conf import settings
 from subida.forms import UploadForm
 from subida.models import Document
 
+from django.http import FileResponse
+
+
+
 import os
+import metadata
 
 
 def index(request):
@@ -35,12 +40,18 @@ def index(request):
             return redirect("index")
     else:
         form = UploadForm()
-    #tambien se puede utilizar render_to_response
-    #return render_to_response('upload.html', {'form': form}, context_instance = RequestContext(request))
-    return render(request, 'subida.html', {'form': form})
+        return render(request, 'subida.html', {'form': form})
 
 def visualizar(request):
     
+
     IP = request.META.get('REMOTE_ADDR')
     archivos=Document.objects.filter(propietario=IP)
-    return render(request,'metadata.html',{'metadata':archivos})
+    for i in archivos:
+        filepath=settings.MEDIA_ROOT+str(i)
+        fp=str(i)
+    metadatos=metadata.InformacionPDF(filepath)
+
+    
+    return HttpResponse(render(request,'metadata.html',{'metadata':metadatos,'documento':filepath}))
+

@@ -1,8 +1,16 @@
 <html>
 <head>
 	<title> Metadatos del documento</title>
+
+
+	{% load staticfiles %}
+	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
+
+
 </head>
+
 <body>
+
 
 	Estos son los metadatos del documento
 
@@ -11,6 +19,14 @@
 	 <li>{{ item }}</li>{% endfor %}
 
 	</ul>
+
+	<input type="submit" value="paqui" onclick = "location='/subida/visualizar'"/>
+
+	{{documento}}
+
+	<a href="{{ documento }}" download=" {{ documento }}">
+	Descargar Archivo
+	</a>
 
 </body>
 </html>
