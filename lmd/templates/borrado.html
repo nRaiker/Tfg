@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title> Metadatos del documento</title>
+
+
+	{% load staticfiles %}
+	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
+
+
+
+
+</head>
+
+<body>
+
+
+Se han borrado los metadatos del documento, estos son los metadatos que quedan
+
+
+	<ul>
+	{% for item in metadata %}
+	 <li>{{ item }}</li>{% endfor %}
+
+	</ul>
+
+
+
+
+
+
+	<input type="submit" value="Descargar archivo" onclick = "location='/subida/descarga'"/>
+
+
+</body>
+</html>

@@ -1,11 +1,17 @@
 <html>
 <head>
-	<title> Metadatos del documento</title>
+	<title> Metadatos del documento:</title>
 
 
 	{% load staticfiles %}
 	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
 
+
+  <script>
+  $( function() {
+    $( "input" ).checkboxradio();
+  } );
+  </script>
 
 </head>
 
@@ -15,18 +21,24 @@
 	Estos son los metadatos del documento
 
 	<ul>
+
 	{% for item in metadata %}
-	 <li>{{ item }}</li>{% endfor %}
 
-	</ul>
 
-	<input type="submit" value="paqui" onclick = "location='/subida/visualizar'"/>
+	<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<p>
+	<li>
+    <label for={{item}}>{{item}}</label>
+    <input type="checkbox" name={{item}} id={{item}}></li>
+    </p>
 
-	{{documento}}
 
-	<a href="{{ documento }}" download=" {{ documento }}">
-	Descargar Archivo
-	</a>
+	 {% endfor %}
+
+
+	<input type="submit" value="Borrar metadatos">
+	</form>
 
 </body>
 </html>

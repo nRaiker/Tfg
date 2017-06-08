@@ -7,6 +7,8 @@ from . import views
 
 urlpatterns = [
 	url(r'^visualizar/', views.visualizar, name='visualizar'),
+	url(r'^borrado/', views.borrado, name='borrado'),
+	url(r'^descarga/', views.descarga, name='descarga'),
     url(r'^$', views.index, name='index'),
 
 ]
