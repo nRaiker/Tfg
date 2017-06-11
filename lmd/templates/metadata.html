@@ -24,13 +24,12 @@
 
 	{% for item in metadata %}
 
-
 	<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<p>
 	<li>
-    <label for={{item}}>{{item}}</label>
-    <input type="checkbox" name={{item}} id={{item}}></li>
+    <label for={{item.tag}}>{{item.meta}}</label>
+    <input type="checkbox" name={{item.tag}} id={{item.tag}}></li>
     </p>
 
 

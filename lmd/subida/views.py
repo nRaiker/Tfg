@@ -1,31 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
-
-# Create your views here.
-
-from django.http import HttpResponse
-from django.conf import settings
-
-from subida.forms import UploadForm
-from subida.models import Document
-
-from django.http import FileResponse
-
-
-from wsgiref.util import FileWrapper
-from django.utils.encoding import smart_str
 
 import os
 import sys
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.conf import settings
+from subida.forms import UploadForm
+from subida.models import Document
+from wsgiref.util import FileWrapper
+from django.utils.encoding import smart_str
+
+
 import metadata
 
 
 
-def index(request):
+def principal(request):
     if request.method == 'POST':
-        print request.POST
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
 
@@ -40,7 +34,7 @@ def index(request):
 
             newdoc = Document(propietario = IP,docfile = request.FILES['docfile'])
             newdoc.save(form)
-            return redirect("index")
+            return redirect("principal")
     else:
         form = UploadForm()
         return render(request, 'subida.html', {'form': form})
@@ -53,7 +47,8 @@ def visualizar(request):
     for i in archivos:
         filepath = settings.MEDIA_ROOT+str(i)
         fp = str(i)
-    metadatos = metadata.InformacionPDF(filepath)
+
+    metadatos = metadata.ExtraerMetadatos(filepath)
 
 
     return HttpResponse(render(request,'metadata.html',{'metadata':metadatos,'documento':filepath}))
@@ -82,18 +77,13 @@ def borrado(request):
         if 'csrfmiddlewaretoken' in noborrar:
             noborrar.remove('csrfmiddlewaretoken')
 
-        print noborrar
         metadata.BorrarMetadatos(filepath,carpeta,noborrar)
-        metadatos = metadata.InformacionPDF(filepath)
-        #for i in metadatos:
-         #   aux=i.find(':')
-          #  print i[:aux]
-           # print request.POST.get(str(i[:aux+1]))
+        metadatos = metadata.ExtraerMetadatos(filepath)
 
         return HttpResponse(render(request,'borrado.html',{'metadata':metadatos,'documento':filepath}))
 
     else:
-        return redirect("index")
+        return redirect("principal")
 
 def descarga(request):
 
