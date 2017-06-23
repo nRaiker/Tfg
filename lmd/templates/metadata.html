@@ -1,7 +1,10 @@
 <html>
 <head>
-	<title> Metadatos del documento:</title>
+	<title> Metadatos del documento</title>
 
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}" />
 
 	{% load staticfiles %}
 	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
@@ -17,27 +20,44 @@
 
 <body>
 
+<h1>
+Visualización de los metadatos
+</h1>
 
-	Estos son los metadatos del documento
+<br>
 
-	<ul>
 
+<p>
+	Estos son los metadatos del documento. Seleccione las casillas de los metadatos que desea
+	conservar.
+	<br>
+</p>
+
+	
 	{% for item in metadata %}
 
+	<fieldset>
 	<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
+
+
 	{% csrf_token %}
+
 	<p>
-	<li>
     <label for={{item.tag}}>{{item.meta}}</label>
-    <input type="checkbox" name={{item.tag}} id={{item.tag}}></li>
+    <input type="checkbox" name={{item.tag}} id={{item.tag}}>
     </p>
 
+    </fieldset>
 
 	 {% endfor %}
 
 
 	<input type="submit" value="Borrar metadatos">
+
 	</form>
+	
+
+	
 
 </body>
 </html>

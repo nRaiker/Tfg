@@ -1,7 +1,9 @@
 <html>
 <head>
-	<title> Metadatos del documento</title>
+	<title> Borrado</title>
 
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}" />
 
 	{% load staticfiles %}
 	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
@@ -13,16 +15,25 @@
 
 <body>
 
+<h1> Borrado completado </h1>
 
-Se han borrado los metadatos del documento, estos son los metadatos que quedan
+
+<p>Los metadatos que permanecen en el documento son los siguientes:</p>
+
+<br>
+
 
 
 	<ul>
 	{% for item in metadata %}
-	 <li>{{item.meta}}</li>{% endfor %}
+	<fieldset>
+	 <label for={{item.meta}}> {{item.meta}}</label>
+	 <br>
+	 </fieldset>
+
+	 {% endfor %}
 
 	</ul>
-
 
 
 
