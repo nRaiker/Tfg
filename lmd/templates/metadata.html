@@ -3,11 +3,27 @@
 	<title> Metadatos del documento</title>
 
 
+	<!--
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}" /> -->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	{% load staticfiles %}
-	<script type="text/javascript" src="{ % static" js/codgo.js" %}></script>
+	<script type="text/jquery-3" src="{ % static" js/jquery-3.2.1.js.js"" %}></script>
+
 
 
   <script>
@@ -20,44 +36,53 @@
 
 <body>
 
-<h1>
-Visualización de los metadatos
-</h1>
+<header>
+	<div class="container text-center">
+
+	<h1>
+	Visualización de los metadatos
+	</h1>
+
+</div>
+
+</header>
+
 
 <br>
 
-
-<p>
-	Estos son los metadatos del documento. Seleccione las casillas de los metadatos que desea
-	conservar.
-	<br>
-</p>
-
-	
-	{% for item in metadata %}
-
-	<fieldset>
-	<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
-
-
-	{% csrf_token %}
+<div class="container text-center">
 
 	<p>
-    <label for={{item.tag}}>{{item.meta}}</label>
-    <input type="checkbox" name={{item.tag}} id={{item.tag}}>
-    </p>
+		Estos son los metadatos del documento. Seleccione las casillas de los metadatos que desea
+		conservar.
 
-    </fieldset>
+	</p>
+</div>
 
-	 {% endfor %}
+<br>
+
+	<div class="container">
+
+		{% for item in metadata %}
+
+		<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
 
 
-	<input type="submit" value="Borrar metadatos">
+			{% csrf_token %}
 
-	</form>
-	
+			<p>
+			<label for={{item.tag}}>{{item.meta}}</label>
+			<input type="checkbox" name={{item.tag}} id={{item.tag}}>
+			</p>
 
-	
+		 {% endfor %}
+
+		 <input type="submit" value="Borrar metadatos">
+
+		 </form>
+
+	</div>
+
 
 </body>
 </html>
