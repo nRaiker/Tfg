@@ -24,21 +24,38 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 
 <body>
 
-<header>
-	<div class="container text-center">
-		<h1> Borrado completado</h1>
+	<header>
+		<div class="container-fluid">
+			<div class="col-xs-2 col-md-2">
+			</div>
+
+			<div class="col-xs-1 col-md-1">
+				{% load static %}
+				<img src={% static "Imagenes/logo.png" %} width="200" height="200" />
+			</div>
+
+			<div class="col-xs-1 col-md-1">
+			</div>
+			<div class="col-xs-4 col-md-4 text-center">
+				<br />
+				<br />
+			<h1>Borrado de metadatos</h1>
+			<br />
+			<br />
+			<p>
+				Los metadatos que permanecen en el documento son los siguientes.
+			</p>
+		</div>
+
+		<div class="col-xs-4 col-md-4">
+		</div>
+
 	</div>
 
-</header>
+
+	</header>
 
 <br>
-
-<div class="container text-center">
-
-<p>Los metadatos que permanecen en el documento son los siguientes:</p>
-
-</div>
-
 
 <br>
 
@@ -60,7 +77,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 
 <div class="container">
 <br />
-<input type="submit" value="Descargar archivo" onclick = "location='/subida/descarga'"/>
+<input type="submit" class="btn btn-primary" value="Descargar archivo" onclick = "location='/subida/descarga'"/>
 
 </div>
 

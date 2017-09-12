@@ -40,7 +40,6 @@ def principal(request):
         return render(request, 'subida.html', {'form': form})
 
 def visualizar(request):
-    
 
     IP = request.META.get('REMOTE_ADDR')
     archivos = Document.objects.filter(propietario=IP)
@@ -49,7 +48,6 @@ def visualizar(request):
         fp = str(i)
 
     metadatos = metadata.ExtraerMetadatos(filepath)
-
 
     return HttpResponse(render(request,'metadata.html',{'metadata':metadatos,'documento':filepath}))
 

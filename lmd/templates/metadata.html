@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title> Metadatos del documento</title>
+	<title> Borrado de metadatos</title>
 
 
 	<!--
@@ -36,50 +36,61 @@
 
 <body>
 
-<header>
-	<div class="container text-center">
+	<header>
+		<div class="container-fluid">
+			<div class="col-xs-2 col-md-2">
+			</div>
 
-	<h1>
-	Visualización de los metadatos
-	</h1>
+			<div class="col-xs-1 col-md-1">
+				{% load static %}
+				<img src={% static "Imagenes/logo.png" %} width="200" height="200" />
+			</div>
 
-</div>
+			<div class="col-xs-1 col-md-1">
+			</div>
+			<div class="col-xs-4 col-md-4 text-center">
+				<br />
+				<br />
+			<h1>Borrado de metadatos</h1>
+			<br />
+			<br />
+			<p>
+				Estos son los metadatos del documento. Seleccione las casillas de los metadatos que desea
+				conservar.
+			</p>
+		</div>
 
-</header>
+		<div class="col-xs-4 col-md-4">
+		</div>
 
+	</div>
+
+
+	</header>
 
 <br>
 
-<div class="container text-center">
-
-	<p>
-		Estos son los metadatos del documento. Seleccione las casillas de los metadatos que desea
-		conservar.
-
-	</p>
-</div>
 
 <br>
 
 	<div class="container">
 
-		{% for item in metadata %}
-
-		<form action="/subida/borrado/" method="post" enctype="multipart/form-data">
-
+		<form  action="/subida/borrado/" method="post" enctype="multipart/form-data">
 
 			{% csrf_token %}
 
-			<p>
-			<label for={{item.tag}}>{{item.meta}}</label>
-			<input type="checkbox" name={{item.tag}} id={{item.tag}}>
-			</p>
+			{% for item in metadata %}
 
-		 {% endfor %}
+			<div class="checbox">
+				<label><input type="checkbox" name={{item.tag}} id={{item.tag}}/> {{item.meta}} </label>
+			</div>
 
-		 <input type="submit" value="Borrar metadatos">
+			{% endfor %}
+			<br>
+			<button type="submit"  class="btn btn-primary">Borrar metadatos</button>
 
-		 </form>
+		</form>
+
 
 	</div>
 

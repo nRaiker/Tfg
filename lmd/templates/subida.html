@@ -24,27 +24,47 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% load staticfiles %}
-<script type="text/jquery-3" src="{ % static" js/jquery-3.2.1.js.js""%}></script>
+<script src="{% static "js/jquery-3.2.1.js" %}"></script>
+<script src="{% static "js/bootstrap-filestyle.min.js" %}"></script>
+
 
 
 <body>
 
 
+
 <header>
-	<div class="container text-center">
-		<h1> Borrado de metadatos</h1>
+	<div class="container-fluid">
+		<div class="col-xs-2 col-md-2">
+		</div>
+
+		<div class="col-xs-1 col-md-1">
+			{% load static %}
+			<img src={% static "Imagenes/logo.png" %} width="200" height="200" />
+		</div>
+
+		<div class="col-xs-1 col-md-1">
+		</div>
+		<div class="col-xs-4 col-md-4 text-center">
+			<br />
+			<br />
+		<h1>Borrado de metadatos</h1>
+		<br />
+		<br />
+		<p>
+			Esta página esta diseñada para poder visualizar y borrar los metadatos de sus archivos.
+		</p>
 	</div>
+
+	<div class="col-xs-4 col-md-4">
+	</div>
+
+</div>
+
+
 </header>
 
 <br>
-
-
-<div class="container text-center">
-	<p>
-		Esta página esta diseñada para poder visualizar y borrar los metadatos de sus archivos.
-	</p>
-
-</div>
 
 <br>
 <br>
@@ -52,15 +72,27 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 
 <div class="container">
 
-		<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<form action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
 	            {{ form.as_p }}
-	        <input type="submit" value="Subir archivo">
+					<br>
+	        <input type="submit" class="btn btn-primary" value="Subir archivo">
 	    </form>
+
 			<br>
-	    <input type="submit" value="Ver metadatos" onclick = "location='/subida/visualizar'"/>
-	</body>
+	    <input type="submit" class="btn btn-primary" value="Ver metadatos" onclick = "location='/subida/visualizar'"/>
 
 </div>
 
+
+<!--
+
+	Poner aqui que se muestren los ficheros subidos
+	Bajar imagenes de los tipos de archivos
+	Pasarle el nombre como parametro
+
+
+ -->
+</body>
 
 </html>
